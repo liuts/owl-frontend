@@ -22,7 +22,7 @@
       </ul>
     </div>
     <div class="footer">
-      TalkingData@2011~2018
+      TalkingData@2011~2019
     </div>
   </div>
 </template>
@@ -97,9 +97,9 @@ export default {
     },
     // 选择产品线
     selectProduct(obj) {
-      localStorage.setItem('productInfo', JSON.stringify(obj));
       this.$router.push({
         path: `/console/panel/list/${obj.id}`,
+        query: { product: obj.name },
       });
     },
     getUser() {

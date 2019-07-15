@@ -75,7 +75,7 @@ export default {
       searchName: '', //  搜索名称
       filterEnable: '', // 筛选条件
       filterStatus: '', // 状态筛选
-      isMyrule: false,
+      isMyrule: true,
       isRole: false,
       isAddStatus: false, // 是否是添加模式
       filter: { // 翻页
@@ -83,6 +83,7 @@ export default {
         page_size: 10,
         productId: '',
         order: '',
+        my: true,
       },
       total: 0,
       selectedData: [], // 选中数据
@@ -305,12 +306,14 @@ export default {
     openAlarmList(strategy) {
       this.$router.push({
         path: `/alarm/event/listby/${strategy.id}/1/${this.filter.productId}`,
+        query: { product: this.$route.query.product },
       });
     },
     // 新建策略
     createData() {
       this.$router.push({
         path: `/alarm/brule/${this.filter.productId}`,
+        query: { product: this.$route.query.product },
       });
     },
     // eslint-disable-next-line
@@ -477,19 +480,21 @@ export default {
     viewRule(rule) {
       this.$router.push({
         path: `/alarm/vrule/${rule.id}/${this.filter.productId}`,
+        query: { product: this.$route.query.product },
       });
     },
     // 编辑策略
     editRule(rule) {
-      localStorage.setItem('eruleInfo', JSON.stringify(rule));
       this.$router.push({
         path: `/alarm/erule/${rule.id}/${this.filter.productId}`,
+        query: { product: this.$route.query.product },
       });
     },
     // 克隆策略
     cloneRule(rule) {
       this.$router.push({
         path: `/alarm/crule/${rule.id}/${this.filter.productId}`,
+        query: { product: this.$route.query.product },
       });
     },
     // 返回该页时情况

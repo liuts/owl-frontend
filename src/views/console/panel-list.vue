@@ -39,7 +39,7 @@
           <Input v-model="createInfo.name"></Input>
         </FormItem>
       </Form>
-       <div slot="footer">
+      <div slot="footer">
         <Button @click="createCancel">取消</Button>
         <Button @click="createSuccess" type="primary">确定</Button>
       </div>
@@ -280,9 +280,12 @@ export default {
     },
     // 查看详情
     viewDetail(item) {
-      localStorage.setItem('panelItem', JSON.stringify(item));
       this.$router.push({
         path: `/console/panel/detail/${item.id}/${this.filter.productId}`,
+        query: {
+          product: this.$route.query.product,
+          panel: item.name,
+        },
       });
     },
     // 初始化过滤条件
